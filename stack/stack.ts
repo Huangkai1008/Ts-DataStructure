@@ -1,6 +1,8 @@
 interface Stack<E> {
     /**
      * 栈结构
+     * 操作为数组的子集
+     * Last In First Out   后进先出 LIFO
      */
     push(e: E): void; // 向栈中加入元素
     pop(): E; // 弹出栈顶元素
@@ -11,6 +13,9 @@ interface Stack<E> {
 
 
 class ArrayStack<E> implements Stack<E> {
+    /**
+     * 利用数组构造栈 数组尾作为栈顶   [0, 1, 2, 3 ] top
+     */
 
     arr: E[];
 
