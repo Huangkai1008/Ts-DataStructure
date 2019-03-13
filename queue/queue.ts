@@ -18,10 +18,9 @@ class ArrayQueue<E> implements Queue<E> {
      * 数组头作为队首，数组尾作为队尾          front [0, 1, 2, 3, 4, 5] tail
      * 注意： 循环队列当   (tail + 1 ) % front == 0 时队列满
      */
-    arr: E[];
 
-    constructor() {
-        this.arr = [];
+
+    constructor(private arr: E[] = []) {
     }
 
     enqueue(e: E): void {
@@ -29,7 +28,7 @@ class ArrayQueue<E> implements Queue<E> {
     }
 
     dequeue(): E {
-        let first = this.arr[0];
+        const first = this.arr[0];
         this.arr.shift();
         return first;
     }

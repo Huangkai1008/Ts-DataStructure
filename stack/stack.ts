@@ -17,10 +17,10 @@ class ArrayStack<E> implements Stack<E> {
      * 利用数组构造栈 数组尾作为栈顶   [0, 1, 2, 3 ] top
      */
 
-    arr: E[];
 
-    constructor() {
-        this.arr = [];
+
+    constructor(
+        private arr: E[] = []) {
     }
 
     getSize(): number {
@@ -36,7 +36,7 @@ class ArrayStack<E> implements Stack<E> {
     }
 
     pop(): E {
-        let last = this.arr[this.arr.length - 1];
+        const last = this.arr[this.arr.length - 1];
         this.arr.pop();
         return last;
     }
