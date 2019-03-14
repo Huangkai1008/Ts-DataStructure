@@ -59,5 +59,48 @@ class LinkedList<T> {
         this.add(data, this.length);
     }
 
+    get(index: number): LinkNode<T> {
+        // 获得index位置的元素
+        if (index < 0 || index >= this.length) {
+            throw new RangeError('Get failed, illegal index');
+        }
 
+        let cur = this.head;
+        for (let i = 0; i < index; i++) {
+            if (cur !== undefined) {
+                cur = cur.next;
+            }
+        }
+
+        return cur as LinkNode<T>;
+    }
+
+    contains(data: T): boolean {
+        // 是否存在data元素
+        let cur = this.head;
+        while (cur !== undefined) {
+            if (cur.data === data) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
+
+    remove(index: number): void {
+        // 移除index位置元素
+        if (index < 0 || index >= this.length) {
+            throw new RangeError('remove failed, illegal index');
+        }
+
+        let prev = this.head;
+        for (let i = 0; i < index - 1; i++) {
+            if (prev !== undefined) {
+                prev = prev.next;
+            }
+        }
+    }
 }
+
+
+
