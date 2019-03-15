@@ -1,4 +1,4 @@
-interface Stack<E> {
+export interface Stack<E> {
     /**
      * 栈结构
      * 操作为数组的子集
@@ -12,13 +12,10 @@ interface Stack<E> {
 }
 
 
-class ArrayStack<E> implements Stack<E> {
+export class ArrayStack<E> implements Stack<E> {
     /**
      * 利用数组构造栈 数组尾作为栈顶   [0, 1, 2, 3 ] top
      */
-
-
-
     constructor(
         private arr: E[] = []) {
     }

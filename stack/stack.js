@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 var ArrayStack = /** @class */ (function () {
     /**
      * 利用数组构造栈 数组尾作为栈顶   [0, 1, 2, 3 ] top
@@ -25,6 +27,7 @@ var ArrayStack = /** @class */ (function () {
     };
     return ArrayStack;
 }());
+exports.ArrayStack = ArrayStack;
 var arrayStack = new ArrayStack();
 for (var i = 0; i < 5; i++) {
     arrayStack.push(i);

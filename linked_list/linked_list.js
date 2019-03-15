@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 var LinkNode = /** @class */ (function () {
     /**
      * 链表节点类型
@@ -18,6 +20,7 @@ var LinkedList = /** @class */ (function () {
      * head
      */
     function LinkedList(length, head) {
+        if (length === void 0) { length = 0; }
         this.length = length;
         this.head = head;
     }
@@ -111,6 +114,7 @@ var LinkedList = /** @class */ (function () {
     };
     return LinkedList;
 }());
+exports.LinkedList = LinkedList;
 var linkedList = new LinkedList(0); // 构造一个空链表
 for (var i = 0; i < 5; i++) {
     linkedList.append(i);

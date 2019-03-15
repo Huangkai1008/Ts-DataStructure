@@ -12,7 +12,7 @@ class LinkNode<T> {
 }
 
 
-class LinkedList<T> {
+export class LinkedList<T> {
     /**
      * 链表
      *    0  --> 1 --> 2 --> 3 --> 4 --> undefined
@@ -20,7 +20,7 @@ class LinkedList<T> {
      * head
      */
     constructor(
-        private length: number,
+        private length: number = 0,
         private head?: LinkNode<T>
     ) {
     }
