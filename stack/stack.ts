@@ -45,7 +45,7 @@ export class ArrayStack<E> implements Stack<E> {
 
 }
 
-let arrayStack = new ArrayStack();
+const arrayStack = new ArrayStack();
 
 for (let i = 0; i < 5; i++) {
     arrayStack.push(i);

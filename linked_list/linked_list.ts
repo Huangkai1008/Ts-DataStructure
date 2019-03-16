@@ -105,7 +105,7 @@ export class LinkedList<T> {
         }
 
         if (prev !== undefined) {
-            let ret = prev.next as LinkNode<T>;
+            const ret = prev.next as LinkNode<T>;
             prev.next = ret.next;
             ret.next = undefined;
             this.length--;
@@ -118,7 +118,7 @@ export class LinkedList<T> {
 
     print(): void {
         // 打印链表
-        let arr = ['head'];
+        const arr = ['head'];
         for (let i = 0; i < this.getSize(); i++) {
             arr.push(`${this.get(i)}`);
         }
@@ -128,7 +128,7 @@ export class LinkedList<T> {
 }
 
 
-let linkedList = new LinkedList(0); // 构造一个空链表
+const linkedList = new LinkedList(0); // 构造一个空链表
 for (let i = 0; i < 5; i++) {
     linkedList.append(i);
 }

@@ -20,7 +20,7 @@ class LinkedListStack<T> implements Stack<T> {
     }
 
     pop(): T {
-        let ret = this.list.get(0);
+        const ret = this.list.get(0);
         this.list.remove(0);
         return ret;
     }
@@ -33,20 +33,20 @@ class LinkedListStack<T> implements Stack<T> {
 
 
 function test(label: string, stack: Stack<number>) {
-    let loop = 10000000;
-    console.time(label);
+    const loop = 10000000;
+    const start = new Date().getTime();
     for (let i = 0; i <= loop; i++) {
         stack.push(i);
     }
-
-    for (let i = 0; i <= loop; i++) {
+    for (let i = 0; i < 10000000; i++) {
         stack.pop();
     }
-    console.timeEnd(label);
+    const end = new Date().getTime();
+    console.log(`${label} const ${end - start}`);
 }
 
-let linkedListStack = new LinkedListStack<number>();
-let arrStack = new ArrayStack<number>();
+const linkedListStack = new LinkedListStack<number>();
+const arrStack = new ArrayStack<number>();
 
 test('linkedList', linkedListStack);
 test('array', arrStack);
