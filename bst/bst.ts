@@ -75,6 +75,67 @@ class BST<T> {
         }
     }
 
+    contain(e: T): boolean {
+        return this.contains(e, this.root);
+    }
+
+    private contains(e: T, node?: TreeNode<T>): boolean {
+        // 以node为根的二分搜索树中是否包含元素e(递归算法语义)
+        if (node === undefined) {
+            return false;
+        }
+        if (e === node.e) {
+            return true;
+        } else if (e < node.e) {
+            return this.contains(e, node.left);
+        } else {
+            return this.contains(e, node.right);
+        }
+    }
+
+    pre() {
+        this.preOrder(this.root);
+    }
+
+    private preOrder(node?: TreeNode<T>) {
+        // 前序遍历以node为根的二分搜索树, 递归算法
+        if (node === undefined) {
+            return;
+        }
+        console.log(node.e, ' ');
+        this.preOrder(node.left);
+        this.preOrder(node.right);
+    }
+
+    in() {
+        this.inOrder(this.root);
+    }
+
+    private inOrder(node?: TreeNode<T>) {
+        // 中序遍历以node为根的二分搜索树, 递归算法
+        // 中序遍历的结果就是二分搜索树排序的结果，从小到大
+        if (node === undefined) {
+            return;
+        }
+        this.inOrder(node.left);
+        console.log(node.e, ' ');
+        this.inOrder(node.right);
+    }
+
+    post() {
+        this.postOrder(this.root);
+    }
+
+    private postOrder(node?: TreeNode<T>) {
+        // 后序遍历以node为根的二分搜索树, 递归算法
+        if (node === undefined) {
+            return;
+        }
+        this.postOrder(node.left);
+        this.postOrder(node.right);
+        console.log(node.e, '');
+    }
+
 
 }
 
