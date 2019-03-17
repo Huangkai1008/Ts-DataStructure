@@ -47,17 +47,18 @@ class BST<T> {
 
     /**
      * 向以node为根的二分搜索树中插入元素e，递归算法
-     *
+     * 天然递归结构表现在: 每个节点的左，右子树都是棵二叉树，所以可以递归去插入，
+     * node为每一个子二叉树的根节点
      */
     private addNode(node: TreeNode<T>, e: T): void {
         if (e === node.e) {
             return;
-            // 小于e的值，并且该节点的左子树为空
+            // e小于根节点的值，并且该节点的左子树为空
         } else if (e < node.e && node.left === undefined) {
             node.left = new TreeNode(e);
             this.size++;
             return;
-            // 大于e的值，并且该节点的右子树为空
+            // e大于根节点的值的值，并且该节点的右子树为空
         } else if (e > node.e && node.right === undefined) {
             node.right = new TreeNode(e);
             this.size++;
@@ -66,10 +67,10 @@ class BST<T> {
 
         // 上面条件不满足，说明还得继续往下找左右子树为null可以挂载上的节点
         if (e < node.e && node.left !== undefined) {
+            // 如果小于，那么继续往它的左子树添加该节点
             this.addNode(node.left, e);
-        } else if (e > node.e && node.right !== undefined)
-        // 如果小于，那么继续往它的左子树添加该节点
-        {
+        } else if (e > node.e && node.right !== undefined) {
+            // 如果大于，那么继续往它的左子树添加该节点
             this.addNode(node.right, e);
         }
     }
