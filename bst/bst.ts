@@ -16,7 +16,7 @@ class TreeNode<T> {
 }
 
 
-class BST<T> {
+export class BST<T> {
     /**
      * 二分搜索树  Binary Search Tree
      */
@@ -219,6 +219,16 @@ class BST<T> {
             }
         }
     }
+
+
 }
 
-let bst = new BST()
+let bst = new BST();
+for (let i = 0; i < 20; i++) {
+    bst.add(i);
+}
+
+bst.pre();
+bst.in();
+bst.post();
+bst.levelOrder();
