@@ -12,7 +12,7 @@ interface Queue<E> {
 }
 
 
-class ArrayQueue<E> implements Queue<E> {
+export class ArrayQueue<E> implements Queue<E> {
     /**
      * 数组构造队列
      * 数组头作为队首，数组尾作为队尾          front [0, 1, 2, 3, 4, 5] tail

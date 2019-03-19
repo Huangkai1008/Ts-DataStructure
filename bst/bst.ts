@@ -1,3 +1,5 @@
+import {ArrayQueue} from '../queue/queue';
+
 class TreeNode<T> {
     /**
      * 二叉树节点类型
@@ -99,6 +101,7 @@ class BST<T> {
 
     private preOrder(node?: TreeNode<T>) {
         // 前序遍历以node为根的二分搜索树, 递归算法
+        // 根 --> 左 --> 右
         if (node === undefined) {
             return;
         }
@@ -114,6 +117,7 @@ class BST<T> {
     private inOrder(node?: TreeNode<T>) {
         // 中序遍历以node为根的二分搜索树, 递归算法
         // 中序遍历的结果就是二分搜索树排序的结果，从小到大
+        // 左 -> 根 -> 右
         if (node === undefined) {
             return;
         }
@@ -128,6 +132,7 @@ class BST<T> {
 
     private postOrder(node?: TreeNode<T>) {
         // 后序遍历以node为根的二分搜索树, 递归算法
+        // 左 -> 右 --> 根
         if (node === undefined) {
             return;
         }
@@ -137,5 +142,83 @@ class BST<T> {
     }
 
 
+    preOrderNR(): void {
+        // 非递归前序遍历
+        let stack = [];
+        stack.push(this.root);
+        while (stack.length !== 0) {
+            let cur = stack.pop() as TreeNode<T>;
+            console.log(cur.e);
+            if (cur.right !== undefined) {
+                stack.push(cur.right);
+            }
+            if (cur.left !== undefined) {
+                stack.push(cur.left);
+            }
+        }
+    }
+
+    inOrderNR(): void {
+        // 非递归中序遍历
+        let stack = [];
+        let cur = this.root;
+        while (cur !== undefined || stack.length !== 0) {
+            while (cur !== undefined) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+
+            cur = stack.pop() as TreeNode<T>;
+            console.log(cur.e);
+            cur = cur.right;
+        }
+
+    }
+
+    postOrderNR() {
+        // 非递归后序遍历
+        let stack: TreeNode<T>[] = [];
+        let pre = undefined;
+        let cur = this.root;
+
+        while (cur != undefined || stack.length !== 0) {
+
+            if (cur != undefined) {
+                stack.push(cur);
+                cur = cur.left;
+            } else {
+                cur = stack.pop() as TreeNode<T>;
+                if (cur.right == undefined || pre == cur.right) {
+                    console.log(cur.e + ' ');
+                    pre = cur;
+                    cur = undefined;
+                } else {
+                    stack.push(cur);
+                    cur = cur.right;
+                }
+            }
+        }
+    }
+
+    levelOrder() {
+        // 层序遍历
+        let queue = new ArrayQueue<TreeNode<T>>();
+        if (this.root === undefined) {
+            return;
+        }
+        queue.enqueue(this.root);
+        while (queue.isEmpty() === false) {
+            let cur = queue.dequeue();
+            console.log(cur.e);
+
+            if (cur.left !== undefined) {
+                queue.enqueue(cur.left);
+            }
+            if (cur.right !== undefined) {
+                queue.enqueue(cur.right);
+            }
+        }
+    }
 }
 
+let bst = new BST()
