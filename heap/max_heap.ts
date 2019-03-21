@@ -24,22 +24,16 @@ class MaxHeap<T> {
         if (index <= 0) {
             throw new RangeError('错误的序列号');
         }
-        return (index - 1) * 2;
+        return (index - 1) / 2;
     }
 
     left(index: number): number {
         // 给定index节点的左孩子节点
-        if (index <= 0) {
-            throw new RangeError('错误的序列号');
-        }
         return (2 * index + 1);
     }
 
     right(index: number): number {
         // 给定index节点的右孩子节点
-        if (index <= 0) {
-            throw new RangeError('错误的序列号');
-        }
         return (2 * index + 2);
 
     }
@@ -68,4 +62,40 @@ class MaxHeap<T> {
     }
 
 
+    private siftDown(index: number) {
+        while (this.left(index) < this.data.length) {
+            let j = this.left(index);   // 获得左孩子节点
+            // 右孩子有可能不存在，条件: 有右孩子，右孩子的值大于左孩子的值
+            if (j + 1 < this.data.length && this.data[j + 1] > this.data[j]) {
+                j++;    // j为右孩子索引
+            }
+
+            if (this.data[index] > this.data[j]) {
+                break;
+            }
+
+            // 交换index 和 j的位置
+            [this.data[index], this.data[j]] = [this.data[j], this.data[index]];
+
+            index = j;  // 继续下沉
+        }
+    }
+
+    extractMax(): T {
+        // 取出最大元素
+        const ret = this.findMax();
+        [this.data[0], this.data[this.data.length - 1]] = [this.data[this.data.length - 1], this.data[0]];
+        this.data.pop();
+        this.siftDown(0);
+        return ret;
+    }
 }
+
+
+let maxHeap = new MaxHeap();
+
+for (let i = 1; i < 10; i++) {
+    maxHeap.add(i);
+}
+
+console.log(maxHeap);
