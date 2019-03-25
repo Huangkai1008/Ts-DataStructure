@@ -1,5 +1,5 @@
 # Ts-DataStructure
-Ts数据结构
+Using Typescript to implement data structure
 
 ## Environment
 ``` bash
