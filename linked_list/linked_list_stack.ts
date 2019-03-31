@@ -42,7 +42,7 @@ function test(label: string, stack: Stack<number>) {
         stack.pop();
     }
     const end = new Date().getTime();
-    console.log(`${label} const ${end - start}`);
+    console.log(`${label} cost ${end - start}`);
 }
 
 const linkedListStack = new LinkedListStack<number>();

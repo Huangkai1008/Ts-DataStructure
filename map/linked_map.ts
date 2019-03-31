@@ -19,7 +19,7 @@ class LinkedMap<K, V> implements Map<K, V> {
 
     add(key: K, value: V): void {
         let prev = this.head;
-        let member = new LinkNode(key, value);
+        const member = new LinkNode(key, value);
         if (prev === undefined) {
             this.head = member;
             return;
@@ -32,7 +32,7 @@ class LinkedMap<K, V> implements Map<K, V> {
     }
 
     contains(key: K): boolean {
-        let cur = this.head;
+        const cur = this.head;
         while (cur !== undefined) {
             if (cur.key === key) {
                 return true;
@@ -42,7 +42,7 @@ class LinkedMap<K, V> implements Map<K, V> {
     }
 
     get(key: K): V {
-        let cur = this.head;
+        const cur = this.head;
         while (cur !== undefined) {
             if (cur.key === key) {
                 return cur.value;
@@ -73,12 +73,12 @@ class LinkedMap<K, V> implements Map<K, V> {
             return;
         }
 
-        let prev = this.head;
+        const prev = this.head;
         while (prev.next !== undefined) {
-            if (prev.next.key == key) {
+            if (prev.next.key === key) {
                 break;
             }
-            let ret = prev.next;
+            const ret = prev.next;
             prev.next = ret.next;
             ret.next = undefined;
             this.size--;
